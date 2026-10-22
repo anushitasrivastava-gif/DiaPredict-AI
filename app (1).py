@@ -8,7 +8,9 @@ st.set_page_config(
     layout="centered"
 )
 
-saved = joblib.load("/content/diapredict_model.joblib")
+from pathlib import Path
+
+saved = joblib.load(Path(__file__).parent / "diapredict_model.joblib")
 model = saved["model"]
 
 st.markdown("""
