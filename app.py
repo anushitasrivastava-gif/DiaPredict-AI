@@ -230,12 +230,11 @@ elif page == "Health Assessment":
 
         st.subheader("2. Pregnancy Status")
 
-       pregnancy = st.radio(
-    "Select pregnancy status",
-    categories["Pregnancy_Status"].tolist(),
-    horizontal=True
-)
-
+               pregnancy = st.radio(
+            "Select pregnancy status",
+            categories["Pregnancy_Status"].tolist(),
+            horizontal=True
+        )
         st.caption(
             "Pregnancy is recorded only as a dataset demonstration input. "
             "It does not establish gestational diabetes."
