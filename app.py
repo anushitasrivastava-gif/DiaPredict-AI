@@ -230,10 +230,11 @@ elif page == "Health Assessment":
 
         st.subheader("2. Pregnancy Status")
 
-        pregnancy = st.selectbox(
-            "Select pregnancy status",
-            categories["Pregnancy_Status"].tolist()
-        )
+       pregnancy = st.radio(
+    "Select pregnancy status",
+    categories["Pregnancy_Status"].tolist(),
+    horizontal=True
+)
 
         st.caption(
             "Pregnancy is recorded only as a dataset demonstration input. "
@@ -254,16 +255,17 @@ elif page == "Health Assessment":
             ("Vision_Shifts", "Vision Shifts")
         ]
 
-        responses = {}
+                responses = {}
 
         for feature, label in symptom_fields:
 
             options = categories[feature].tolist()
 
-            responses[feature] = st.selectbox(
+            responses[feature] = st.radio(
                 label,
                 options=options,
-                key=feature
+                key=feature,
+                horizontal=True
             )
 
         submitted = st.form_submit_button(
