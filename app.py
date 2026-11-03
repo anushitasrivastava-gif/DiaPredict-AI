@@ -142,9 +142,14 @@ if page == "Home Dashboard":
 
     c1, c2, c3 = st.columns(3)
 
-    c1.metric("Dataset Records", "1,000")
-    c2.metric("Input Variables", "12")
-    c3.metric("Model", "Logistic Regression")
+    c1.write("**Dataset Records**")
+c1.write("1,000")
+
+c2.write("**Input Variables**")
+c2.write("12")
+
+c3.write("**Model**")
+c3.write("Logistic Regression")
 
     st.divider()
 
@@ -214,8 +219,7 @@ elif page == "Health Assessment":
 
             bmi = weight / ((height / 100) ** 2)
 
-            st.metric("Calculated BMI", f"{bmi:.2f} kg/m²")
-
+            st.write(f"**Calculated BMI:** {bmi:.2f} kg/m²")
         st.caption(
             "BMI is calculated automatically from weight and height."
         )
@@ -292,21 +296,17 @@ elif page == "Health Assessment":
 
             st.success("The model successfully processed your sample inputs.")
 
-            st.metric(
-                "Synthetic Demonstration Class",
-                str(prediction)
-            )
-
+            st.write("**Synthetic Demonstration Class:**", str(prediction))
             if hasattr(model, "predict_proba"):
                 probabilities = model.predict_proba(row)[0]
 
                 if 1 in model.classes_:
                     class_index = list(model.classes_).index(1)
 
-                    st.metric(
-                        "Synthetic Class 1 Score",
-                        f"{probabilities[class_index] * 100:.2f}%"
-                    )
+                    st.write(
+    "**Synthetic Class 1 Score:**",
+    f"{probabilities[class_index] * 100:.2f}%"
+)
 
             st.write("**Your submitted sample information:**")
             st.dataframe(row, use_container_width=True)
