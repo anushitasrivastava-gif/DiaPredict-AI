@@ -140,16 +140,18 @@ if page == "Home Dashboard":
         "and generate an educational classification output."
     )
 
+   
     c1, c2, c3 = st.columns(3)
 
     c1.write("**Dataset Records**")
-c1.write("1,000")
+    c1.write("1,000")
 
-c2.write("**Input Variables**")
-c2.write("12")
+    c2.write("**Input Variables**")
+    c2.write("12")
 
-c3.write("**Model**")
-c3.write("Logistic Regression")
+    c3.write("**Model**")
+    c3.write("Logistic Regression")
+
 
     st.divider()
 
