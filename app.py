@@ -58,46 +58,44 @@ if "logged_in" not in st.session_state:
 # LOGIN PAGE
 # ==========================================
 
+
 if not st.session_state.logged_in:
 
-    st.markdown(
-        "<h1 style='text-align:center;color:#7654A5;'>🩺 DiaPredict AI</h1>",
-        unsafe_allow_html=True
-    )
+    st.title("🩺 DiaPredict AI")
+    st.subheader("Welcome to Smarter Health Awareness")
+    st.header("Login to Continue")
 
-    st.markdown(
-        "<h3 style='text-align:center;'>Welcome to Smarter Health Awareness</h3>",
-        unsafe_allow_html=True
-    )
+    st.write("Enter your details to explore the educational dashboard.")
 
-    st.write("")
-    st.write("")
-
-    left, center, right = st.columns([1, 1.2, 1])
-
-    with center:
-        st.subheader("Login to Continue")
-        st.write("Enter your details to explore the educational dashboard.")
-
-        with st.form("login_form"):
-            username = st.text_input("Username")
-            password = st.text_input("Password", type="password")
-            login = st.form_submit_button("Login", use_container_width=True)
-
-            if login:
-                if username.strip() and password.strip():
-                    st.session_state.logged_in = True
-                    st.session_state.username = username
-                    st.rerun()
-                else:
-                    st.warning("Please enter both username and password.")
-
-        st.caption(
-            "Demo login only. This is not a secure authentication system. "
-            "Do not enter real passwords or sensitive information."
+    with st.form("login_form"):
+        username = st.text_input(
+            "Email or Username",
+            placeholder="Enter your email or username"
         )
 
+        password = st.text_input(
+            "Password",
+            type="password",
+            placeholder="Enter a demo password"
+        )
+
+        login_button = st.form_submit_button("Login")
+
+    st.caption(
+        "Demo login only. This is not a secure authentication system. "
+        "Do not enter real passwords or sensitive information."
+    )
+
+    if login_button:
+        if username.strip() and password.strip():
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.rerun()
+        else:
+            st.warning("Please enter both username and password.")
+
     st.stop()
+
 
 
 # ==========================================
