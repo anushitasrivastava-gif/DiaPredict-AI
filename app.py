@@ -178,6 +178,7 @@ if page == "Home Dashboard":
 # HEALTH ASSESSMENT
 # ==========================================
 
+
 elif page == "Health Assessment":
 
     st.title("Health Assessment")
@@ -222,6 +223,7 @@ elif page == "Health Assessment":
             bmi = weight / ((height / 100) ** 2)
 
             st.write(f"**Calculated BMI:** {bmi:.2f} kg/m²")
+
         st.caption(
             "BMI is calculated automatically from weight and height."
         )
@@ -230,11 +232,12 @@ elif page == "Health Assessment":
 
         st.subheader("2. Pregnancy Status")
 
-               pregnancy = st.radio(
+        pregnancy = st.radio(
             "Select pregnancy status",
             categories["Pregnancy_Status"].tolist(),
             horizontal=True
         )
+
         st.caption(
             "Pregnancy is recorded only as a dataset demonstration input. "
             "It does not establish gestational diabetes."
@@ -254,7 +257,7 @@ elif page == "Health Assessment":
             ("Vision_Shifts", "Vision Shifts")
         ]
 
-                responses = {}
+        responses = {}
 
         for feature, label in symptom_fields:
 
@@ -274,7 +277,6 @@ elif page == "Health Assessment":
 
     if submitted:
 
-        # Prepare all model inputs
         input_values = {
             "Age": age,
             "Weight_kg": weight,
@@ -285,7 +287,6 @@ elif page == "Health Assessment":
 
         input_values.update(responses)
 
-        # Preserve exact training feature order
         row = pd.DataFrame(
             [[input_values[f] for f in features]],
             columns=features
@@ -300,6 +301,7 @@ elif page == "Health Assessment":
             st.success("The model successfully processed your sample inputs.")
 
             st.write("**Synthetic Demonstration Class:**", str(prediction))
+
             if hasattr(model, "predict_proba"):
                 probabilities = model.predict_proba(row)[0]
 
@@ -307,9 +309,9 @@ elif page == "Health Assessment":
                     class_index = list(model.classes_).index(1)
 
                     st.write(
-    "**Synthetic Class 1 Score:**",
-    f"{probabilities[class_index] * 100:.2f}%"
-)
+                        "**Synthetic Class 1 Score:**",
+                        f"{probabilities[class_index] * 100:.2f}%"
+                    )
 
             st.write("**Your submitted sample information:**")
             st.dataframe(row, use_container_width=True)
@@ -324,6 +326,7 @@ elif page == "Health Assessment":
         except Exception as e:
             st.error("Prediction could not be generated.")
             st.code(str(e))
+
 
 
 # ==========================================
