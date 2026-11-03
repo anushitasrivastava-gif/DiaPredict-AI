@@ -292,6 +292,7 @@ elif page == "Health Assessment":
             columns=features
         )
 
+        
         try:
             prediction = model.predict(row)[0]
 
@@ -313,10 +314,7 @@ elif page == "Health Assessment":
                         f"{probabilities[class_index] * 100:.2f}%"
                     )
 
-                        st.write("**Submitted sample details:**")
-
-            for column in row.columns:
-                st.write(f"**{column}:** {row.iloc[0][column]}")
+            st.write("**Submitted sample details:**")
 
             for column in row.columns:
                 st.write(f"**{column}:** {row.iloc[0][column]}")
@@ -327,6 +325,7 @@ elif page == "Health Assessment":
                 "a medical assessment, or a diagnosis. Symptoms and BMI "
                 "alone cannot establish whether someone has diabetes."
             )
+
 
         except Exception as e:
             st.error("Prediction could not be generated.")
