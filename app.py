@@ -313,8 +313,10 @@ elif page == "Health Assessment":
                         f"{probabilities[class_index] * 100:.2f}%"
                     )
 
-            st.write("**Your submitted sample information:**")
                         st.write("**Submitted sample details:**")
+
+            for column in row.columns:
+                st.write(f"**{column}:** {row.iloc[0][column]}")
 
             for column in row.columns:
                 st.write(f"**{column}:** {row.iloc[0][column]}")
