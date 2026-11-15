@@ -1,7 +1,8 @@
-
 import streamlit as st
 import pandas as pd
 import joblib
+import pytesseract
+from PIL import Image
 
 # ==========================================
 # DIAPREDICT AI 2.0
@@ -453,6 +454,75 @@ elif page == "Diabetes Across Age Groups":
 # ==========================================
 # ABOUT THE PROJECT
 # ==========================================
+
+elif page == "Lab Report OCR":
+
+    st.title("🔬 Lab Report OCR Scanner")
+    st.write(
+        "Upload a sample laboratory report image to extract selected text."
+    )
+
+    st.info(
+        "Educational demonstration only. Use fictional sample reports, "
+        "not private medical documents."
+    )
+
+    uploaded_file = st.file_uploader(
+        "Upload a sample report",
+        type=["png", "jpg", "jpeg"]
+    )
+
+    if uploaded_file is not None:
+
+        image = Image.open(uploaded_file).convert("RGB")
+
+        st.write("**Uploaded sample report:**")
+        st.image(image, use_container_width=True)
+
+        if st.button("Extract Report Text"):
+
+            try:
+                extracted_text = pytesseract.image_to_string(image)
+
+                st.subheader("Extracted Text")
+                st.text_area(
+                    "OCR Output",
+                    extracted_text,
+                    height=200
+                )
+
+                st.subheader("Recognised Educational Values")
+
+                hba1c_found = False
+                glucose_found = False
+
+                for line in extracted_text.splitlines():
+
+                    lower_line = line.lower()
+
+                    if "hba1c" in lower_line or "a1c" in lower_line:
+                        st.write("**HbA1c:**", line)
+                        hba1c_found = True
+
+                    if "fasting glucose" in lower_line or "fasting blood glucose" in lower_line:
+                        st.write("**Fasting Glucose:**", line)
+                        glucose_found = True
+
+                if not hba1c_found:
+                    st.write("HbA1c: Not detected")
+
+                if not glucose_found:
+                    st.write("Fasting glucose: Not detected")
+
+                st.warning(
+                    "OCR can misread laboratory values. Extracted text "
+                    "must be checked against the original report. "
+                    "This project does not interpret medical results."
+                )
+
+            except Exception as e:
+                st.error("OCR extraction failed.")
+                st.code(str(e))
 
 elif page == "Lifestyle & Wellness":
 
