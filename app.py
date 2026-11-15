@@ -102,6 +102,7 @@ if not st.session_state.logged_in:
 # MAIN DASHBOARD
 # ==========================================
 
+
 st.sidebar.title("🩺 DiaPredict AI")
 st.sidebar.write("Educational Health Awareness Platform")
 
@@ -116,6 +117,8 @@ page = st.sidebar.radio(
         "Health Assessment",
         "Diabetes Awareness",
         "Diabetes Across Age Groups",
+        "Lab Report OCR",
+        "Lifestyle & Wellness",
         "About the Project"
     ]
 )
@@ -123,6 +126,7 @@ page = st.sidebar.radio(
 if st.sidebar.button("Logout"):
     st.session_state.logged_in = False
     st.rerun()
+
 
 
 # ==========================================
