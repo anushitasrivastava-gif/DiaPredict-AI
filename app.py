@@ -454,6 +454,83 @@ elif page == "Diabetes Across Age Groups":
 # ABOUT THE PROJECT
 # ==========================================
 
+elif page == "Lifestyle & Wellness":
+
+    st.title("🌿 Lifestyle & Wellness")
+    st.write(
+        "Explore general wellness habits that support a healthy lifestyle."
+    )
+
+    st.info(
+        "These suggestions are educational only. They are not personalised "
+        "medical advice or a treatment plan."
+    )
+
+    st.divider()
+
+    st.subheader("🥗 1. Balanced Diet")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.write("**Healthy food choices**")
+        st.write("- Include vegetables and seasonal fruits.")
+        st.write("- Choose whole grains where possible.")
+        st.write("- Include protein sources such as dal, beans and paneer.")
+        st.write("- Enjoy a variety of foods in balanced portions.")
+
+    with col2:
+        st.write("**Healthy eating habits**")
+        st.write("- Eat regular, balanced meals.")
+        st.write("- Drink water throughout the day.")
+        st.write("- Limit frequent sugary drinks.")
+        st.write("- Avoid skipping meals.")
+
+    st.divider()
+
+    st.subheader("🚶 2. Physical Activity")
+
+    st.write(
+        "Regular, enjoyable movement can support general health and wellbeing."
+    )
+    st.write("- Walking, cycling or dancing.")
+    st.write("- Playing an outdoor sport.")
+    st.write("- Taking comfortable movement breaks.")
+    st.write("- Choose activities suitable for your abilities.")
+
+    st.divider()
+
+    st.subheader("💧 3. Hydration")
+
+    st.write(
+        "Drink water regularly throughout the day. Your hydration needs "
+        "can vary with weather, activity and individual circumstances."
+    )
+
+    st.divider()
+
+    st.subheader("😴 4. Sleep and Rest")
+
+    st.write("- Maintain a reasonably consistent sleep schedule.")
+    st.write("- Create a comfortable sleeping environment.")
+    st.write("- Take breaks during long study sessions.")
+    st.write("- Allow time for relaxation and rest.")
+
+    st.divider()
+
+    st.subheader("💚 5. Healthy Lifestyle Habits")
+
+    st.write("- Maintain a balanced daily routine.")
+    st.write("- Include enjoyable physical activities.")
+    st.write("- Avoid tobacco and nicotine products.")
+    st.write("- Seek professional medical advice for health concerns.")
+
+    st.warning(
+        "DiaPredict AI uses synthetic educational data. Its model output "
+        "cannot determine your actual diabetes risk or generate medical "
+        "recommendations."
+    )
+
 elif page == "About the Project":
 
     st.title("About DiaPredict AI")
